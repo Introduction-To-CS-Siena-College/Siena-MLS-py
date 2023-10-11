@@ -8,7 +8,7 @@
 #
 # DO NOT MODIFY ANY CODE IN THIS FILE!
 #
-#
+# Authors: Robin Flatland and Ninad Chaudhari @SienaCollege
 ##########################################
 
 from PIL import Image
