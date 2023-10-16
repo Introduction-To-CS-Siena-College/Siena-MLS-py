@@ -15,5 +15,6 @@ setup(
     author_email='nchaudhari@siena.edu',
     description='Multimedia Environment for Students',
     long_description=open('README.md').read(),
-    long_description_content_type='text/markdown'
+    long_description_content_type='text/markdown',
+    python_requires='>=3.8,<3.13', 
 )

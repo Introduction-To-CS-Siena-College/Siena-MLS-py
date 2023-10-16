@@ -30,6 +30,8 @@ from pi_heif import register_heif_opener
 
 register_heif_opener()
 
+from importlib import metadata
+__version__ = metadata.version("Siena-MES")
 class bcolors:
   HEADER = '\033[95m'
   OKBLUE = '\033[94m'
