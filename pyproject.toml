@@ -5,7 +5,7 @@ description = "Multimedia Environment for Students"
 authors = ["Robin Flatland <flatland@siena.edu>","Ninad Chaudhari <nchaudhari@siena.edu>"]
 license = "aGPLv3"
 readme = "README.md"
-requires-python = ">=3.10,<4.0"
+
 homepage = "https://csis110.com/mes"
 repository = "https://github.com/Introduction-To-CS-Siena-College/Siena-MES-py"
 
