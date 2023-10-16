@@ -2,9 +2,12 @@
 name = "siena-mes"
 version = "18"
 description = "Multimedia Environment for Students"
-authors = ["Robin Flatland <flatland@siena.edu>","Ninad Chaudhari <nchaudhari@albany.edu>"]
+authors = ["Robin Flatland <flatland@siena.edu>","Ninad Chaudhari <nchaudhari@siena.edu>"]
 license = "aGPLv3"
 readme = "README.md"
+requires-python = ">=3.10,<4.0"
+homepage = "https://csis110.com/mes"
+repository = "https://github.com/Introduction-To-CS-Siena-College/Siena-MES-py"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -16,6 +19,9 @@ pi-heif = "^0.13.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/Introduction-To-CS-Siena-College/Siena-MES-py/issues"
 
 [build-system]
 requires = ["poetry-core"]
