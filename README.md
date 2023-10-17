@@ -4,10 +4,14 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/siena-mes)
 ](https://pypi.org/project/siena-mes/)
 
-This is a development environment designed for [Media Computation](http://web.eecs.umich.edu/~mjguz/mediacomp/mediaComp-teach/). And a pure python implementation of [gatech-csl/jes]([https://github.com/vuejs/vue](https://github.com/gatech-csl/jes)) with the goal to maintain API parity between the implementations. It contains enhancements from the base implementations which are listed in further sections below. The package can be imported into any Python3  environment to allow students to use the Python programming language to manipulate images, sounds, and videos.  The current API documentation is consistent with the usage of JES in the book, and the subset of functions implemented so far is published here.
+The project is a development platform designed for [Media Computation](http://web.eecs.umich.edu/~mjguz/mediacomp/mediaComp-teach/). It offers a pure Python implementation of [gatech-csl/jes](https://github.com/gatech-csl/jes), aiming to ensure consistent API functionality across both implementations. Notable enhancements beyond the foundational versions are detailed in subsequent sections. This package is compatible with any Python3.10^ version, allowing students to utilize the Python programming language to manipulate multimedia components, including images, sounds, and videos over online repl providers. The current API documentation aligns with the JES usage described in the reference book, and the functions implemented to date are provided here.
 
-The library is developed for The Introduction to Computer Science (CSIS 110) course at Siena College and the college's high school CS programs. 
+This library was developed for the Introduction to Computer Science (CSIS 110) course at Siena College, as well as the college's affiliated high school computer science programs.
 
 ## Support & Grants
 
 [![Siena College](https://badgen.net/static/Supported%20By/Siena%20College?color=006747)](https://siena.edu)
+
+## Contributions
+
+_-Robin Flatland & Ninad Chaudhari (Siena College)_

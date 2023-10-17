@@ -30,6 +30,7 @@ from pi_heif import register_heif_opener
 
 register_heif_opener()
 
+# To enable getting MES version using __version__
 from importlib import metadata
 __version__ = metadata.version("Siena-MES")
 class bcolors:
