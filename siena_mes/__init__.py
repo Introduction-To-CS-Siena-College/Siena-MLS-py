@@ -23,7 +23,7 @@ import warnings
 from os import walk
 from os import listdir
 import glob
-
+import os
 #Replit Extension
 from resizeimage import resizeimage
 from pi_heif import register_heif_opener
@@ -588,47 +588,26 @@ def writeMovieTo(images, filename):
 
 
 def makeMovieFromInitialFile(firstFile):
-  # Extract path and fileName from firstFile.
-  # E.g., if firstFile is animation\frame020.jpg
-  # then path will be animation and fileName
-  # will be frame020.jpg
-  # valid path deliminators are //, /, and \
-  if "//" in firstFile:
-    path = firstFile[0:firstFile.rfind("//")]
-    fileName = firstFile[firstFile.rfind("//") + 2:len(firstFile)]
-  elif "/" in firstFile:
-    path = firstFile[0:firstFile.rfind("/")]
-    fileName = firstFile[firstFile.rfind("/") + 1:len(firstFile)]
-  elif "\\" in firstFile:
-    path = firstFile[0:firstFile.rfind("\\")]
-    fileName = firstFile[firstFile.rfind("\\") + 1:len(firstFile)]
-  else:
-    path = ""
-    fileName = firstFile
+    # Split path and fileName using os.path functions
+    path, fileName = os.path.split(firstFile)
+    
+    # get names of all files in the folder and sort them
+    imageFiles = fileList(path)
+    imageFiles.sort()
 
-  # get names of all files in the folder and
-  # then sort them
-  imageFiles = fileList(path)
-  imageFiles.sort()
+    # find fileName in the list of files in the folder
+    try:
+        index = imageFiles.index(fileName)
+    except ValueError:
+        raise RuntimeError("makeMovieFromInitialFile(firstFile)#: did not find a file with that name")
 
-  # find fileName in the list of files in the folder
-  try:
-    index = imageFiles.index(fileName)
-  except ValueError:
-    # fileName not in list
-    raise RuntimeError(
-        "makeMovieFromInitialFile(firstFile)#: did not find a file with that name"
-    )
+    # remove all names that come before fileName
+    imageFiles = imageFiles[index:]
+    
+    # read in images and put into a list
+    images = [makePicture(os.path.join(path, f)).PILimg for f in imageFiles]
 
-  # remove all names that come before fileName
-  imageFiles = imageFiles[index:len(imageFiles)]
-  # read in images and put into a list
-  images = []
-  for f in imageFiles:
-    pic = makePicture(path + "//" + f)
-    images.append(pic.PILimg)
-
-  return images
+    return images
 
 
 def writeAnimatedGif(movie, fileName, frameRate=24):
