@@ -32,7 +32,7 @@ register_heif_opener()
 
 # To enable getting MES version using __version__
 from importlib import metadata
-__version__ = metadata.version("Siena-MES")
+__version__ = metadata.version("Siena-MLS")
 class bcolors:
   HEADER = '\033[95m'
   OKBLUE = '\033[94m'
@@ -132,7 +132,7 @@ class JESSound:
 # JES Image Functions
 #########################################################
 def makePicture(filename):
-   """
+  """
     Creates and returns a JESImage object from the specified image file.
 
     This function opens an image file and automatically resizes it if its area exceeds 360,000 pixels. It converts images in "RGBA" and "P" modes to "RGB".
@@ -146,7 +146,7 @@ def makePicture(filename):
     Raises:
         FileNotFoundError: If the specified file does not exist.
         IOError: If the file cannot be opened or read.
-    """
+  """
   PILimg = Image.open(filename)
   iArea = PILimg.height * PILimg.width
   print(PILimg.mode)
@@ -192,7 +192,7 @@ def makeEmptyPicture(width, height, color=(255, 255, 255)):
 
     Returns:
         JESImage: An empty image with the specified dimensions and background color.
-    """
+  """
   PILimg = PIL.Image.new("RGB", (int(width), int(height)), color)
   return JESImage(PILimg, "noFileName")
 
@@ -579,8 +579,8 @@ def writeSoundTo(JESsnd, filename):
         >>> snd = makeSound("path/to/sound.wav")
         >>> writeSoundTo(snd, "path/to/save/sound.wav") # Saves the sound in WAV format.
     """
-  #print(JESsnd.samples)
-  wavfile.write(filename, JESsnd.sampleRate, JESsnd.samples)
+    #print(JESsnd.samples)
+    wavfile.write(filename, JESsnd.sampleRate, JESsnd.samples)
 
 
 def getLength(JESsnd):
@@ -611,11 +611,11 @@ def getSampleValueAt(JESsnd, index):
         >>> snd = makeSound("path/to/sound.wav")
         >>> value = getSampleValueAt(snd, 0) # Retrieves the first sample value.
     """
-  return JESsnd.samples[index]
+    return JESsnd.samples[index]
 
 
 def setSampleValueAt(JESsnd, index, val):
-  """
+    """
     Sets the sample value at a specified index in a JESSound object.
 
     This function updates the value of the audio sample at the given index in the JESSound object. The index should be within the range of the sound's length, and the value should be within the audio's valid sample value range.
@@ -633,7 +633,7 @@ def setSampleValueAt(JESsnd, index, val):
         >>> snd = makeSound("path/to/sound.wav")
         >>> setSampleValueAt(snd, 0, 123) # Sets the first sample value to 123.
     """
-  JESsnd.samples[index] = val
+    JESsnd.samples[index] = val
 
 
 def getSamplingRate(JESsnd):
