@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "siena-mes"
-version = "20.1"
+name = "siena-mls"
+version = "18"
 description = "Multimedia Environment for Students"
 authors = ["Robin Flatland <flatland@siena.edu>","Ninad Chaudhari <nchaudhari@siena.edu>"]
 license = "aGPLv3"
@@ -21,7 +21,7 @@ pi-heif = "^0.13.1"
 pytest = "^7.4.2"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/Introduction-To-CS-Siena-College/Siena-MES-py/issues"
+"Bug Tracker" = "https://github.com/Introduction-To-CS-Siena-College/Siena-MLS-py/issues"
 
 [build-system]
 requires = ["poetry-core"]
