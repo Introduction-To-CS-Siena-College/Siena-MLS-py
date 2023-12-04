@@ -48,7 +48,6 @@ poetry run pytest
 ## Contributions
 
 _-Robin Flatland & Ninad Chaudhari (Siena College)_
-# lab-python-unit-testing
 
 ## Annexture
 
