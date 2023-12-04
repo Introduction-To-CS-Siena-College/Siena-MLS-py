@@ -132,6 +132,21 @@ class JESSound:
 # JES Image Functions
 #########################################################
 def makePicture(filename):
+   """
+    Creates and returns a JESImage object from the specified image file.
+
+    This function opens an image file and automatically resizes it if its area exceeds 360,000 pixels. It converts images in "RGBA" and "P" modes to "RGB".
+
+    Args:
+        filename (str): The path of the image file to be opened.
+
+    Returns:
+        JESImage: An object representing the opened image.
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
+        IOError: If the file cannot be opened or read.
+    """
   PILimg = Image.open(filename)
   iArea = PILimg.height * PILimg.width
   print(PILimg.mode)
@@ -167,6 +182,17 @@ def makePicture(filename):
 
 
 def makeEmptyPicture(width, height, color=(255, 255, 255)):
+  """
+    Creates an empty JESImage object with the specified dimensions and background color.
+
+    Args:
+        width (int): The width of the image in pixels.
+        height (int): The height of the image in pixels.
+        color (tuple, optional): The background color of the image, specified as a tuple of RGB values. Defaults to white (255, 255, 255).
+
+    Returns:
+        JESImage: An empty image with the specified dimensions and background color.
+    """
   PILimg = PIL.Image.new("RGB", (int(width), int(height)), color)
   return JESImage(PILimg, "noFileName")
 
@@ -196,6 +222,20 @@ def getHeight(JESimg):
 
 
 def getPixel(JESimg, x, y):
+  """
+    Retrieves a JESPixel object representing the pixel at the specified coordinates in the given JESImage.
+
+    Args:
+        JESimg (JESImage): The image from which to retrieve the pixel.
+        x (int): The x-coordinate (column) of the pixel.
+        y (int): The y-coordinate (row) of the pixel.
+
+    Returns:
+        JESPixel: The pixel at the specified coordinates.
+
+    Raises:
+        RuntimeError: If the x or y coordinates are out of the image's range.
+    """
   outOfXRange = ((x < 0) or (x >= getWidth(JESimg)))
   outOfYRange = ((y < 0) or (y >= getHeight(JESimg)))
   if (outOfXRange):
@@ -335,6 +375,23 @@ def distance(c1, c2):
 
 
 def writePictureTo(JESimg, filename):
+  """
+    Saves the provided JESImage object to a file with the specified filename.
+
+    This function writes the image in the JESImage object to a file. The filename extension determines the format of the saved image. Currently, it supports saving in JPEG and PNG formats. The function raises an error if the filename does not have an appropriate extension.
+
+    Args:
+        JESimg (JESImage): The JESImage object to be saved.
+        filename (str): The path and name of the file where the image will be saved. Must end with '.jpg', '.jpeg', or '.png'.
+
+    Raises:
+        RuntimeError: If the filename does not end with '.jpg', '.jpeg', or '.png'.
+
+    Examples:
+        >>> img = makePicture("path/to/image.jpg")
+        >>> writePictureTo(img, "path/to/save/image.jpg") # Saves the image in JPEG format.
+        >>> writePictureTo(img, "path/to/save/image.png") # Saves the image in PNG format.
+    """
   # determine if jpg extension on filename
   index = filename.rfind(".")
   if (index == -1):  # extension not found
@@ -467,6 +524,27 @@ def addArcFilled(JESimg,
 # JES Sound Functions
 #########################################################
 def makeSound(filename):
+  """
+    Creates and returns a JESSound object from the specified audio file.
+
+    This function reads an audio file and creates a JESSound object. 
+    It handles mono audio directly, and for stereo audio, it extracts and uses the first channel only. 
+
+    Args:
+        filename (str): The path of the audio file to be opened.
+
+    Returns:
+        JESSound: An object representing the opened audio file.
+
+    Raises:
+        FileNotFoundError: If the specified audio file does not exist.
+        IOError: If the file cannot be opened, read, or is in an unsupported format.
+        Warning: If any issues are encountered during the reading of the file.
+
+    Examples:
+        >>> snd = makeSound("path/to/sound.wav")
+        >>> # snd is now a JESSound object representing the sound file.
+  """
   warnings.filterwarnings("ignore")
   sampleRate, samples = wavfile.read(filename)
   # Check and see if samples is single channel (mono).
@@ -484,6 +562,23 @@ def makeSound(filename):
 
 
 def writeSoundTo(JESsnd, filename):
+    """
+    Saves the provided JESSound object to a file with the specified filename.
+
+    This function writes the sound data contained in the JESSound object to an audio file. The format of the saved audio is determined by the file extension of the specified filename. Currently, it supports WAV format. The function raises an error if the filename does not have an appropriate extension.
+
+    Args:
+        JESsnd (JESSound): The JESSound object to be saved.
+        filename (str): The path and name of the file where the sound will be saved. Must end with '.wav'.
+
+    Raises:
+        RuntimeError: If the filename does not end with '.wav'.
+        IOError: If there's an error in writing the file.
+
+    Examples:
+        >>> snd = makeSound("path/to/sound.wav")
+        >>> writeSoundTo(snd, "path/to/save/sound.wav") # Saves the sound in WAV format.
+    """
   #print(JESsnd.samples)
   wavfile.write(filename, JESsnd.sampleRate, JESsnd.samples)
 
@@ -497,10 +592,47 @@ def getNumSamples(JESsnd):
 
 
 def getSampleValueAt(JESsnd, index):
+    """
+    Retrieves the sample value at a specified index in a JESSound object.
+
+    This function returns the value of the audio sample at the given index from the JESSound object. The index should be within the range of the sound's length. 
+
+    Args:
+        JESsnd (JESSound): The JESSound object containing the sound samples.
+        index (int): The index of the sample value to retrieve.
+
+    Returns:
+        int: The sample value at the specified index.
+
+    Raises:
+        IndexError: If the index is out of the range of the sound's sample array.
+
+    Examples:
+        >>> snd = makeSound("path/to/sound.wav")
+        >>> value = getSampleValueAt(snd, 0) # Retrieves the first sample value.
+    """
   return JESsnd.samples[index]
 
 
 def setSampleValueAt(JESsnd, index, val):
+  """
+    Sets the sample value at a specified index in a JESSound object.
+
+    This function updates the value of the audio sample at the given index in the JESSound object. The index should be within the range of the sound's length, and the value should be within the audio's valid sample value range.
+
+    Args:
+        JESsnd (JESSound): The JESSound object containing the sound samples.
+        index (int): The index of the sample value to set.
+        val (int): The new value to set for the sample at the specified index.
+
+    Raises:
+        IndexError: If the index is out of the range of the sound's sample array.
+        ValueError: If the provided value is outside the permissible range for audio samples.
+
+    Examples:
+        >>> snd = makeSound("path/to/sound.wav")
+        >>> setSampleValueAt(snd, 0, 123) # Sets the first sample value to 123.
+    """
   JESsnd.samples[index] = val
 
 
