@@ -10,7 +10,7 @@ This library was developed for the Introduction to Computer Science (CSIS 110) c
 
 ## Project Commands & Scripts
 
-This project utilizes Poetry for efficient management. Below is a quick guide to the most commonly used commands:
+This project utilizes [Poetry](https://python-poetry.org/) for efficient package & dependencies management. Below is a quick guide to the most commonly used commands:
 
 ### Installation
 To install all dependencies, run:
