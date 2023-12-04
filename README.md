@@ -1,4 +1,4 @@
-# Siena-MES : Multimedia Environment for Students
+# Siena-MLS : Multimedia Library for Students
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/siena-mes)
 [![PyPI - Version](https://img.shields.io/pypi/v/siena-mes)
