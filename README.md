@@ -8,20 +8,38 @@ The project is a development platform designed for [Media Computation](http://we
 
 This library was developed for the Introduction to Computer Science (CSIS 110) course at Siena College, as well as the college's affiliated high school computer science programs.
 
-## Project commands & scripts
-We use poetry to manage this project. Some references: 
+## Project Commands & Scripts
 
-**Install deps:**  ```poetry install```\
-**Build:**  ```poetry build```\
-**Test:**   ```poetry run pytest```
+This project utilizes Poetry for efficient management. Below is a quick guide to the most commonly used commands:
+
+### Installation
+To install all dependencies, run:
+```bash
+poetry install
+```
+
+### Build
+Build the project with:
+```bash
+poetry build
+```
+
+### Testing
+Execute tests using pytest:
+```bash
+poetry run pytest
+```
 
 ---
 
-#### Deploying to PyPi
-Don't forget to update the version number in `pyproject.toml`.
-Refer to the github action workflows,
-- Creating a *pre-release* release will push it to `test.pypi.org`
-- Creating a *release* will push it to `pipy.org`
+### Deploying to PyPi
+
+**Version Update:** Before deploying, remember to update the version number in `pyproject.toml`.
+
+**GitHub Actions Workflow:**
+- **Pre-Release Deployment:** Create a pre-release in GitHub to push to `test.pypi.org`.
+- **Release Deployment:** Create a release in GitHub to push to `pypi.org`.
+
 
 ## Support & Grants
 
