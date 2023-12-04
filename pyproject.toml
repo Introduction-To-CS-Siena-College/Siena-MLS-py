@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "siena-mls"
+name = "siena_mls"
 version = "18"
 description = "Multimedia Environment for Students"
 authors = ["Robin Flatland <flatland@siena.edu>","Ninad Chaudhari <nchaudhari@siena.edu>"]
 license = "aGPLv3"
 readme = "README.md"
 
-homepage = "https://csis110.com/mes"
-repository = "https://github.com/Introduction-To-CS-Siena-College/Siena-MES-py"
+homepage = "https://csis110.com/mls"
+repository = "https://github.com/Introduction-To-CS-Siena-College/Siena-MLS-py"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -19,6 +19,8 @@ pi-heif = "^0.13.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
+coverage= "^7.3.2"
+pytest-cov = "^4.1.0"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/Introduction-To-CS-Siena-College/Siena-MLS-py/issues"
@@ -26,3 +28,12 @@ pytest = "^7.4.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-s --cov siena_mls --cov-report term --cov-report html"
+testpaths = [
+    "tests"
+]
+pythonpath = [
+ "tests"
+]
