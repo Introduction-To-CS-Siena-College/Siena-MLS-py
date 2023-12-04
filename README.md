@@ -51,10 +51,11 @@ _-Robin Flatland & Ninad Chaudhari (Siena College)_
 # lab-python-unit-testing
 
 ## Annexture
-<detail>
+
+<details>
 <summary>Alternate: not using pyTest</summary>
 The same can be acheved without using pytest
 
 ```poetry run coverage run -m unittest discover```\
 ```poetry run coverage html```
-</detail>
+</details>
