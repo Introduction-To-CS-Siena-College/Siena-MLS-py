@@ -15,14 +15,12 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 from scipy.io import wavfile
-import sys
+
 import math
 import numpy
 import PIL
 import warnings
-from os import walk
-from os import listdir
-import glob
+import os
 
 # ------ Extension Code
 from resizeimage import resizeimage
@@ -156,11 +154,13 @@ def makePicture(filename):
   iArea = PILimg.height * PILimg.width
 
   if (iArea > 360000):
+    filename_without_extension, only_extension = os.path.splitext(filename)
     print(
-        f"{bcolors.OKBLUE}Creating {filename}_resized.jpg; a resized version: use for speed.{bcolors.ENDC}"
+      
+        f"{bcolors.OKBLUE}Creating {filename_without_extension}_resized.{only_extension}; a resized version: use for speed.{bcolors.ENDC}"
     )
     resized_img = resizeimage.resize_thumbnail(PILimg, [600, 600])
-    writePictureTo(resized_img, filename + "_resized.jpg")
+    writePictureTo(resized_img, f"{filename_without_extension}_resized.{only_extension}")
   # if PILimg.mode in ("RGBA", "P"): PILimg = PILimg.convert("RGB")
   return JESImage(PILimg, filename)
 
@@ -708,7 +708,7 @@ def makeEmptySoundBySeconds(duration, sampleRate=22050):
 # returns a list of all files in the folder
 def fileList(folder):
   found_files = []
-  for (dirpath, dirnames, filenames) in walk(folder):
+  for (dirpath, dirnames, filenames) in os.walk(folder):
     found_files.extend(filenames)
     break
   return found_files
@@ -783,7 +783,7 @@ def writeAnimatedGif(movie, fileName, frameRate=24):
 def writeSlideShowTo(fileName, delay=1):
   # get names of all files in the folder
   allFiles = []
-  for fn in listdir():
+  for fn in os.listdir():
     allFiles.append(fn)
 
   # create list containing only
