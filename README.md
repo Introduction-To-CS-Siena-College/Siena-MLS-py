@@ -48,8 +48,10 @@ poetry run pytest
 **Version Update:** Before deploying, remember to update the version number in `pyproject.toml`.
 
 **GitHub Actions Workflow:**
-- **Pre-Release Deployment:** Create a pre-release in GitHub to push to `test.pypi.org`.
-- **Release Deployment:** Create a release in GitHub to push to `pypi.org`.
+1. Contribute, Test, Commit & Push any changes.
+2. Increment Version in `pyproject.toml`.
+3. **Pre-Release Deployment:** Create a pre-release in GitHub to push to `test.pypi.org`. Just confirm that the Actions ran and the version is avaliable over test.pypi
+4. **Release Deployment:** Create a release in GitHub to push to `pypi.org`.
 
 
 ## Support & Grants
