@@ -157,7 +157,7 @@ def makePicture(filename):
 
   if (iArea > 360000):
     print(
-        f"{bcolors.WARNING}Creating {filename}_resized.jpg; a resized version for speed.{bcolors.ENDC}"
+        f"{bcolors.OKBLUE}Creating {filename}_resized.jpg; a resized version: use for speed.{bcolors.ENDC}"
     )
     resized_img = resizeimage.resize_thumbnail(PILimg, [600, 600])
     writePictureTo(resized_img, filename + "_resized.jpg")
