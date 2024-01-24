@@ -8,6 +8,17 @@ The project is a development platform designed for [Media Computation](http://we
 
 This library was developed for the Introduction to Computer Science (CSIS 110) course at Siena College, as well as the college's affiliated high school computer science programs.
 
+## Usage
+To install the package, use pip / poetry / upm etc. Here is a command:
+```bash
+pip install siena_mls
+```
+
+Then in the first line of your main file: 
+```python
+from siena_mls import *
+```
+
 ## Project Commands & Scripts
 
 This project utilizes [Poetry](https://python-poetry.org/) for efficient package & dependencies management. Below is a quick guide to the most commonly used commands:
