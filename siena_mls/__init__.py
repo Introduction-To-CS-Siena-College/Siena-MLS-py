@@ -24,15 +24,19 @@ from os import walk
 from os import listdir
 import glob
 
-#Replit Extension
+# ------ Extension Code
 from resizeimage import resizeimage
 from pi_heif import register_heif_opener
+from .managament_service import ManagementService
 
-register_heif_opener()
 
-# To enable getting MES version using __version__
-from importlib import metadata
-__version__ = metadata.version("Siena-MLS")
+def __init__():
+  register_heif_opener()
+  management_service = ManagementService()
+  __version__ = management_service.getVersion()
+    
+__init__()
+# ------ End Extension
 class bcolors:
   HEADER = '\033[95m'
   OKBLUE = '\033[94m'
@@ -153,11 +157,11 @@ def makePicture(filename):
 
   if (iArea > 360000):
     print(
-        f"{bcolors.WARNING}Note: makePicture has automatically resized this image to better work with replit :) You are all set, Enjoy!{bcolors.ENDC}"
+        f"{bcolors.WARNING}Creating {filename}_resized.jpg; a resized version for speed.{bcolors.ENDC}"
     )
-
-    PILimg = resizeimage.resize_thumbnail(PILimg, [600, 600])
-  if PILimg.mode in ("RGBA", "P"): PILimg = PILimg.convert("RGB")
+    resized_img = resizeimage.resize_thumbnail(PILimg, [600, 600])
+    writePictureTo(resized_img, filename + "_resized.jpg")
+  # if PILimg.mode in ("RGBA", "P"): PILimg = PILimg.convert("RGB")
   return JESImage(PILimg, filename)
 
 

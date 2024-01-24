@@ -7,7 +7,6 @@ class ManagementService:
   
   def __init__(self):
     self.__version__ = metadata.version("Siena-MLS")
-    self.pyVersion = 
 
   def get_latest_version(self, package_name):
     response = requests.get(f"https://pypi.org/pypi/{package_name}/json")
@@ -20,7 +19,7 @@ class ManagementService:
     return data["info"]["version"]
 
   def printVersion(self):
-    print(`Current MLS Version is ${self.__version})
+    print(f"Current MLS Version is ${self.__version}")
     print(sys.version)
     
   def getVersion(self):
@@ -28,6 +27,6 @@ class ManagementService:
     
   def notify_if_outdated(self):
     installed_version = self.__version__
-    latest_version = get_latest_version(package_name)
+    latest_version = self.get_latest_version("Siena-MLS")
     if latest_version > installed_version:
-      warnings.warn(`Friently Nudge: You are using ${installed_version} of Siena-mls`, DeprecationWarning)
+      warnings.warn("Friently Nudge: You are using ${installed_version} of Siena-mls", DeprecationWarning)
