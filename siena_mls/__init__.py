@@ -27,13 +27,14 @@ import glob
 # ------ Extension Code
 from resizeimage import resizeimage
 from pi_heif import register_heif_opener
-from .managament_service import ManagementService
+from .management_service import ManagementService
 
 
 def __init__():
   register_heif_opener()
   management_service = ManagementService()
   __version__ = management_service.getVersion()
+  management_service.notify_if_outdated()
     
 __init__()
 # ------ End Extension
@@ -153,7 +154,6 @@ def makePicture(filename):
   """
   PILimg = Image.open(filename)
   iArea = PILimg.height * PILimg.width
-  print(PILimg.mode)
 
   if (iArea > 360000):
     print(

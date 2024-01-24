@@ -1,6 +1,6 @@
 import requests
 import warnings
-from warnings import DeprecationWarning
+
 import sys
 from importlib import metadata # To enable getting MES version using __version__
 class ManagementService: 
