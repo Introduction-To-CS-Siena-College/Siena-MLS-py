@@ -1,4 +1,19 @@
 {
-    "name": "Siena-MLS",
-    "postCreateCommand": "pip install ."
+  "name": "Siena-MLS Dev Container",
+  "postCreateCommand": "",
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "pip install .",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["siena_mls/__init__.py", "README.md"]
+    },
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "MS-vsliveshare.vsliveshare",
+        "MS-vsliveshare.vsliveshare-audio",
+        "MS-vsliveshare.vsliveshare-pack"
+      ]
+    }
+  }
 }

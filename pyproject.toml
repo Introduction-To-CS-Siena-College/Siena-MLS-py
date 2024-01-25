@@ -5,7 +5,7 @@ description = "Multimedia Environment for Students"
 authors = ["Robin Flatland <flatland@siena.edu>","Ninad Chaudhari <nchaudhari@siena.edu>"]
 license = "aGPLv3"
 readme = "README.md"
-
+include = ["siena_mls", "JES"]
 homepage = "https://csis110.com/mls"
 repository = "https://github.com/Introduction-To-CS-Siena-College/Siena-MLS-py"
 
