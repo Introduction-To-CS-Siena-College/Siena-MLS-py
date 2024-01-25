@@ -9,50 +9,41 @@ The project is a development platform designed for [Media Computation](http://we
 This library was developed for the Introduction to Computer Science (CSIS 110) course at Siena College, as well as the college's affiliated high school computer science programs.
 
 ## Usage
-To install the package, use pip / poetry / upm etc. Here is a command:
+
+To install the package in your projects, use pip / poetry / upm etc. The best way is to add the following to your pyproject.toml file:
+
+```toml
+[tool.poetry.dependencies]
+python = ">=3.10.0,<3.11"
+siena_mls = ">18" # This is the MLS Version ( check with the latest one )
+```
+
+If you just want to use this on a script, this will install it in your python environment.
+
 ```bash
 pip install siena_mls
 ```
 
-Then in the first line of your main file: 
+*Finaly* in the first line of your main file:
+
 ```python
 from siena_mls import *
 ```
 
-## Project Commands & Scripts
+## Contributin and Deploying
 
-This project utilizes [Poetry](https://python-poetry.org/) for efficient package & dependencies management. Below is a quick guide to the most commonly used commands:
+The project is configured to auto deploy to PyPi on project release. Here is a possible sequence of actions that may help.
 
-### Installation
-To install all dependencies, run:
-```bash
-poetry install
-```
+### Contributions
 
-### Build
-Build the project with:
-```bash
-poetry build
-```
+1. Use github codespaces / local VSCode to make changes.
+2. Contribute any changes, test things out in `playground.py`.
+3. Add files and Commit then push.
+4. **Version Update:** : Increment Version in `pyproject.toml`.
+5. **Pre-Release Deployment:** Create a pre-release in GitHub to push to `test.pypi.org`. Just confirm that the Actions ran and the version is avaliable over test.pypi
+6. **Release Deployment:** Create a release in GitHub to push to `pypi.org`.
 
-### Testing
-Execute tests using pytest:
-```bash
-poetry run pytest
-```
-
----
-
-### Deploying to PyPi
-
-**Version Update:** Before deploying, remember to update the version number in `pyproject.toml`.
-
-**GitHub Actions Workflow:**
-1. Contribute, Test, Commit & Push any changes.
-2. Increment Version in `pyproject.toml`.
-3. **Pre-Release Deployment:** Create a pre-release in GitHub to push to `test.pypi.org`. Just confirm that the Actions ran and the version is avaliable over test.pypi
-4. **Release Deployment:** Create a release in GitHub to push to `pypi.org`.
-
+Refer to comamnds in Annex if you need to manually build / test / publish.
 
 ## Support & Grants
 
@@ -71,3 +62,15 @@ The same can be acheved without using pytest
 ```poetry run coverage run -m unittest discover```\
 ```poetry run coverage html```
 </details>
+
+## Installing dependencies
+
+`pip install .` can parse `pyproject.toml` and install all deps in current python environment.
+
+## Project Commands & Scripts
+
+This project utilizes [Poetry](https://python-poetry.org/) for efficient package & dependencies management. Below is a quick guide to the most commonly used commands:
+
+1. **Install Dependencies:** `poetry install`
+2. **Build Project:** `poetry build`
+3. **Test:** `poetry run pytest`
