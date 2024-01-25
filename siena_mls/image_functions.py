@@ -1,9 +1,10 @@
-from PIL import ImageTk
+
 
 class MLS_GUI_ImageFunctions:
     
     def showImage(image):
         try:
+            from PIL import ImageTk
             from tkinter import Tk,Canvas,NW
             root = Tk()
             canvas = Canvas(root, width = image.PILimg.width, height = image.PILimg.height)

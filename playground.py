@@ -1,5 +1,5 @@
 from siena_mls import *
-a = makePicture("tests/assets/siena-poster_resized.jpeg")
-addRect(a, 10, 10, 100, 50, white)
+a = makePicture("tests/assets/siena-poster_resized_model.jpeg")
+addRectFilled(a, 10, 10, 100, 50, white)
 showImage(a)
-writePictureTo(a, "dut.jpg")
+writePictureTo(a, "out.jpg")

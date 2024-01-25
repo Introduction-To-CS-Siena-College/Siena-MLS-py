@@ -11,14 +11,11 @@
 # Authors: Robin Flatland and Ninad Chaudhari @SienaCollege
 ##########################################
 
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 from scipy.io import wavfile
 
 import math
 import numpy
-import PIL
 import warnings
 import os
 
@@ -152,6 +149,7 @@ def makePicture(filename):
         IOError: If the file cannot be opened or read.
   """
   PILimg = Image.open(filename)
+  PILimg = ImageOps.exif_transpose(PILimg) #rotate/transform the image according to its exif tag
   iArea = PILimg.height * PILimg.width
 
   if (iArea > 360000):
@@ -199,7 +197,7 @@ def makeEmptyPicture(width, height, color=(255, 255, 255)):
     Returns:
         JESImage: An empty image with the specified dimensions and background color.
   """
-  PILimg = PIL.Image.new("RGB", (int(width), int(height)), color)
+  PILimg = Image.new("RGB", (int(width), int(height)), color)
   return JESImage(PILimg, "noFileName")
 
 
