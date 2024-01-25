@@ -10,9 +10,7 @@
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "MS-vsliveshare.vsliveshare",
-        "MS-vsliveshare.vsliveshare-audio",
-        "MS-vsliveshare.vsliveshare-pack"
+        "MS-vsliveshare.vsliveshare"
       ]
     }
   }
