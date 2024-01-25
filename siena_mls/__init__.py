@@ -155,12 +155,12 @@ def makePicture(filename):
 
   if (iArea > 360000):
     filename_without_extension, only_extension = os.path.splitext(filename)
+    resized_img_name = f"{filename_without_extension}_resized.{only_extension}"
     print(
-      
-        f"{bcolors.OKBLUE}Creating {filename_without_extension}_resized.{only_extension}; a resized version: use for speed.{bcolors.ENDC}"
+        f"{bcolors.OKBLUE}Creating {resized_img_name}; a resized version: use for speed.{bcolors.ENDC}"
     )
     resized_img = resizeimage.resize_thumbnail(PILimg, [600, 600])
-    writePictureTo(resized_img, f"{filename_without_extension}_resized.{only_extension}")
+    writePictureTo(JESImage(resized_img, resized_img_name),resized_img_name)
   # if PILimg.mode in ("RGBA", "P"): PILimg = PILimg.convert("RGB")
   return JESImage(PILimg, filename)
 
