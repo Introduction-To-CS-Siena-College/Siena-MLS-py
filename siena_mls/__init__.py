@@ -26,7 +26,7 @@ import os
 from resizeimage import resizeimage
 from pi_heif import register_heif_opener
 from .management_service import ManagementService
-
+from .image_functions import MLS_GUI_ImageFunctions
 
 def __init__():
   register_heif_opener()
@@ -35,6 +35,7 @@ def __init__():
   management_service.notify_if_outdated()
     
 __init__()
+showImage = MLS_GUI_ImageFunctions.showImage
 # ------ End Extension
 class bcolors:
   HEADER = '\033[95m'
@@ -154,7 +155,8 @@ def makePicture(filename):
   iArea = PILimg.height * PILimg.width
 
   if (iArea > 360000):
-    filename_without_extension, only_extension = os.path.splitext(filename)
+    filename_without_extension, extension_with_dot = os.path.splitext(filename)
+    only_extension = extension_with_dot[1:]
     resized_img_name = f"{filename_without_extension}_resized.{only_extension}"
     print(
         f"{bcolors.OKBLUE}Creating {resized_img_name}; a resized version: use for speed.{bcolors.ENDC}"
