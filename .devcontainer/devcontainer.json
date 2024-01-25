@@ -1,0 +1,4 @@
+{
+    "name": "Siena-MLS",
+    "postCreateCommand": "poetry install"
+}
