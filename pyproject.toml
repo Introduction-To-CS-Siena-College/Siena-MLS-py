@@ -10,8 +10,8 @@ homepage = "https://csis110.com/mls"
 repository = "https://github.com/Introduction-To-CS-Siena-College/Siena-MLS-py"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.14"
-Pillow = "^12"
+python = ">=3.10,<3.12" #PIL 10 does not support >3.12
+Pillow = "^10.2"
 scipy = "^1.14"
 numpy = ">=1.23.5, <2.3.0"
 python-resize-image = "^1.1.20"
