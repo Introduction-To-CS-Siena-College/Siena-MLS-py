@@ -21,12 +21,12 @@ import os
 
 # ------ Extension Code
 from resizeimage import resizeimage
-from pi_heif import register_heif_opener
+# from pi_heif import register_heif_opener
 from .management_service import ManagementService
 from .image_functions import MLS_GUI_ImageFunctions
 
 def __init__():
-  register_heif_opener()
+  #register_heif_opener()
   management_service = ManagementService()
   __version__ = management_service.getVersion()
   management_service.notify_if_outdated()
