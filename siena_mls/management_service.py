@@ -29,4 +29,4 @@ class ManagementService:
     installed_version = self.__version__
     latest_version = self.get_latest_version("Siena-MLS")
     if latest_version > installed_version:
-      warnings.warn("Friently Nudge: You are using ${installed_version} of Siena-mls", DeprecationWarning)
+      warnings.warn(f"Friently Nudge: You are using {installed_version} of Siena-mls", DeprecationWarning)
