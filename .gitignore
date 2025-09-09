@@ -84,3 +84,4 @@ dmypy.json
 # Other
 *.log
 *.sqlite
+.DS_Store
