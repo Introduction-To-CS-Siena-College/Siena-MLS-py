@@ -1,11 +1,14 @@
 [tool.poetry]
 name = "siena_mls"
-version = "23"
+version = "24"
 description = "Multimedia Environment for Students"
 authors = ["Robin Flatland <flatland@siena.edu>","Ninad Chaudhari <nchaudhari@siena.edu>"]
 license = "aGPLv3"
 readme = "README.md"
-include = ["siena_mls", "JES"]
+packages = [
+    {include = "siena_mls"},
+    {include = "JES"}
+]
 homepage = "https://csis110.com/mls"
 repository = "https://github.com/Introduction-To-CS-Siena-College/Siena-MLS-py"
 
@@ -15,6 +18,7 @@ Pillow = "^10.2"
 scipy = "^1.14"
 numpy = ">=1.23.5, <2.3.0"
 python-resize-image = "^1.1.20"
+matplotlib = "^3.8" #currently only for "show" image function
 # pi-heif = "^0.13.1"
 
 [tool.poetry.group.dev.dependencies]

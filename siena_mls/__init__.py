@@ -32,7 +32,7 @@ def __init__():
   management_service.notify_if_outdated()
     
 __init__()
-showImage = MLS_GUI_ImageFunctions.showImage
+show = MLS_GUI_ImageFunctions.show
 # ------ End Extension
 class bcolors:
   HEADER = '\033[95m'
